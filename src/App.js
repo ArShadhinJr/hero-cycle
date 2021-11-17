@@ -1,24 +1,71 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import About from './components/About/About';
+import AddServices from './components/AddServices/AddServices';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import ManageOrders from './components/ManageOrders/ManageOrders';
+import MyOrders from './components/MyOrders/MyOrders';
+import NotFound from './components/NotFound/NotFound';
+import OrderPlace from './components/OrderPlace/OrderPlace';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ProdectDetails from './components/ProductDetails/ProductDetails';
+import Services from './components/Services/Services';
+import Singup from './components/Singup/Singup';
+import AuthProvider from './context/AuthProvider';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // Router set 
+    <AuthProvider>
+      <BrowserRouter>
+        {/* header load in all page  */}
+        <Header></Header>
+        <Switch>
+          <Route exact path="/home">
+            <Home></Home>
+          </Route>
+          <PrivateRoute exact path="/products/:productId">
+            <ProdectDetails></ProdectDetails>
+          </PrivateRoute>
+          <PrivateRoute exact path="/orderplace">
+            <OrderPlace></OrderPlace>
+          </PrivateRoute>
+          <PrivateRoute exact path="/myorders">
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+          <PrivateRoute exact path="/manageorders">
+            <ManageOrders></ManageOrders>
+          </PrivateRoute>
+          <PrivateRoute exact path="/addservices">
+            <AddServices></AddServices>
+          </PrivateRoute>
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
+          <Route exact path="/products">
+            <Services></Services>
+          </Route>
+          <Route exact path="/about">
+            <About></About>
+          </Route>
+          <Route exact path="/login">
+            <Login></Login>
+          </Route>
+          <Route exact path="/singup">
+            <Singup></Singup>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
+          </Route>
+        </Switch>
+        {/* footer load in all page */}
+        <Footer></Footer>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
