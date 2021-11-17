@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 
-const ManageOrders = () => {
-    const [ orders, setOrders ] = useState( [] );
+const ManageProducts = () => {
+    // return (
+    //     <div className="fw-bolder text-center p-5 m-5 mb-0 pb-0">
+    //         <h1 className="fs-1 text-warning">MANAGE PRODUCTS</h1>
+    //         <p>HERO CYCLE / MANAGE YOUR ALL PRODUCTS</p>
+    //         <br /><br />
+
+    //     </div>
+    // );
+
+    const [ products, setProducts ] = useState( [] );
     const [ control, setControl ] = useState( false );
 
     useEffect( () => {
-        fetch( `http://localhost:5000/allOrders` )
+        fetch( `http://localhost:5000/products` )
             .then( res => res.json() )
-            .then( data => setOrders( data ) )
+            .then( data => setProducts( data ) )
     }, [ control ] );
 
     const handleDelete = ( id ) => {
-        fetch( `http://localhost:5000/deleteOrder/${id}`, {
+        fetch( `http://localhost:5000/deleteProduct/${id}`, {
             method: "DELETE",
         } )
             .then( ( res ) => res.json() )
@@ -32,7 +41,6 @@ const ManageOrders = () => {
                 <h1 className="fs-1 text-warning">MANAGE ALL SERVICES</h1>
                 <p>HELEX DELIVERY / MANAGE ALL ORDERS</p>
                 <br /><br />
-
             </div>
 
             <div>
@@ -42,22 +50,24 @@ const ManageOrders = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Service Title</th>
-                                <th>Email</th>
-                                <th>Order Date</th>
-                                <th>Cost</th>
+                                <th>Product Name</th>
+                                <th>Product ID</th>
+                                <th>Details</th>
+                                <th>Gender</th>
+                                <th>Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        {orders?.map( ( order, index ) => (
+                        {products?.map( ( product, index ) => (
                             <tbody>
                                 <tr>
                                     <td>{index + 1}</td>
-                                    <td>{order.productName}</td>
-                                    <td>{order.email}</td>
-                                    <td>{order.date}</td>
-                                    <td>{order.cost}</td>
-                                    <button onClick={() => handleDelete( order._id )} className="btn bg-danger p-2">Delete</button>
+                                    <td>{product.nameClass}</td>
+                                    <td>{product._id}</td>
+                                    <td>{product.details}</td>
+                                    <td>{product.gender}</td>
+                                    <td>{product.cost}</td>
+                                    <button onClick={() => handleDelete( product._id )} className="btn bg-danger p-2">Delete</button>
                                 </tr>
                             </tbody>
                         ) )}
@@ -66,6 +76,8 @@ const ManageOrders = () => {
             </div>
         </>
     );
+
+
 };
 
-export default ManageOrders;
+export default ManageProducts;

@@ -2,4 +2,8 @@
 /* header style  */
 .header-title {
     font-family: 'Bonheur Royale', cursive; 
-      }
+  }
+
+  .size {
+    width: 40px;
+  }

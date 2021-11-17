@@ -17,7 +17,7 @@ const DoctorList = ( props ) => {
                         <Card.Text><b>{gender}</b></Card.Text>
                         <Card.Text>Price: <b>৳ {cost}</b></Card.Text>
                         <p className="fs-5 bg-gray border border-4 rounded"> {details}. Good services. Allah bless you. Good wishes for you. <br /></p>
-                        <Link to={`/products/${_id}`}><p className="text-center"><Button variant="warning">Buy Now</Button></p></Link>
+                        <Link to={`/products/${_id}`}><p className="text-center"><Button variant="warning">Buy {nameClass}</Button></p></Link>
                     </Card.Body>
                 </Card>
             </Col>

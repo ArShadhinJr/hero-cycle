@@ -2,13 +2,15 @@ import Button from '@restart/ui/esm/Button';
 import axios from 'axios';
 import React from 'react';
 import { ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 
-const AddServices = () => {
+const Review = () => {
     const { register, handleSubmit, reset } = useForm();
+    const { user } = useAuth();
 
     const onSubmit = data => {
-        axios.post( 'http://localhost:5000/products', data )
+        axios.post( 'http://localhost:5000/reviews', data )
             .then( res => {
                 if ( res.data.insertedId ) {
                     alert( 'added successfully' );
@@ -19,53 +21,59 @@ const AddServices = () => {
 
     return (
         <Container className="py-5">
-            <h2 className="text-center text-warning pb-4 ">Please Add a Product</h2>
+            <div className="fw-bolder text-center p-5 m-5 mb-0 pb-0">
+                <h1 className="fs-1 text-warning">MY REVIWES</h1>
+                <p>HERO CYCLE / MANAGE YOUR ALL REVIWES</p>
+                <br /><br />
+
+            </div>
             <Form onSubmit={handleSubmit( onSubmit )}>
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="2">
                         Name
                     </Form.Label>
                     <Col sm="10">
-                        <Form.Control type="text" {...register( "nameClass", { required: true, maxLength: 20 } )} placeholder="Name" />
-                    </Col>
-                </Form.Group>
-                <Form.Group as={Row} className="mb-3">
-                    <Form.Label column sm="2">Details</Form.Label>
-                    <Col sm="10">
-                        <Form.Control as="textarea" rows={3} {...register( "details" )} placeholder="Details" />
+                        <Form.Control type="text" {...register( "name" )} value={user.displayName} />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="2">
-                        Price
+                        Image Link
                     </Form.Label>
                     <Col sm="10">
-                        <Form.Control type="number" {...register( "cost" )} placeholder="price" />
+                        <Form.Control type="text" {...register( "img" )} value={user.photoURL} />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3">
-                    <Form.Label column sm="2">
-                        Phone
-                    </Form.Label>
+                    <Form.Label column sm="2">Review</Form.Label>
                     <Col sm="10">
-                        <Form.Control type="text" {...register( "img" )} placeholder="image url" />
+                        <Form.Control as="textarea" rows={3} {...register( "rev" )} placeholder="Write your review here." />
                     </Col>
                 </Form.Group>
 
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="2">
-                        Gender
+                        Address
                     </Form.Label>
                     <Col sm="10">
-                        <Form.Control type="text" {...register( "gender" )} placeholder="Gender" />
+                        <Form.Control type="text" {...register( "add" )} placeholder="Your Address Here" />
                     </Col>
                 </Form.Group>
-                <ButtonGroup className="mb-2 text-center">
-                    <Button type="submit" className="btn btn-warning">Add a Service</Button>
+                <Form.Group as={Row} className="mb-3">
+                    <Form.Label column sm="2">
+                        Rating
+                    </Form.Label>
+                    <Col sm="10">
+                        <Form.Control type="number" max="5" min="1" {...register( "rating" )} placeholder="rate us 1~5" />
+                    </Col>
+                </Form.Group>
+                <p className="text-danger">Please Click all input filed for confirm your order.</p>
+                <ButtonGroup className="mb-2">
+                    <Button type="submit" className="btn btn-warning">Add a Review</Button>
                 </ButtonGroup>
             </Form>
         </Container>
     );
 };
 
-export default AddServices;
+export default Review;

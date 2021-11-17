@@ -4,12 +4,12 @@ import { Card, Col, Row } from 'react-bootstrap';
 
 const HappyCustomer = () => {
     // use State to set services 
-    const [ customers, setCustomers ] = useState( [] );
+    const [ reviews, setReviews ] = useState( [] );
     //  Load Services data from services json file 
     useEffect( () => {
-        fetch( 'https://quiet-crag-51319.herokuapp.com/customer' )
+        fetch( 'http://localhost:5000/reviews' )
             .then( res => res.json() )
-            .then( data => setCustomers( data ) )
+            .then( data => setReviews( data ) )
     }, [] );
 
 
@@ -17,14 +17,14 @@ const HappyCustomer = () => {
         <Row xs={1} md={3} className="g-4 m-5 mt-0  p-5 pt-3">
             {/* map for show services  */}
             {
-                customers.map( customer => <><Col>
+                reviews.map( review => <><Col>
                     <Card>
-                        <Card.Img variant="top" src={customer.img} />
+                        <Card.Img variant="top" className="rounded rounded-circle" src={review.img} />
                         <Card.Body>
-                            <Card.Title><h2 className="text-danger">{customer.name}</h2></Card.Title>
-                            <h3><Card.Text className="text-justify ">{customer.add}</Card.Text></h3>
-                            <Card.Text className="text-justify ">Mr/Ms, {customer.name} says: <b>{customer.rev}</b></Card.Text>
-                            <p className="text-center"><Button className="btn btn-warning" variant="warning">Call {customer.name}</Button></p>
+                            <Card.Title><h2 className="text-danger">{review.name}</h2></Card.Title>
+                            <h3><Card.Text className="text-justify ">{review.add}</Card.Text></h3>
+                            <Card.Text className="text-justify ">Mr/Ms, {review.name} says: <b>{review.rev}</b></Card.Text>
+                            <p className="text-center"><Button className="btn btn-warning" variant="warning">Call {review.name}</Button></p>
                         </Card.Body>
                     </Card>
                 </Col></> )
