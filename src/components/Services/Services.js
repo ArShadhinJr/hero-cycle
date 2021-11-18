@@ -7,7 +7,7 @@ const Services = () => {
     const [ products, setProducts ] = useState( [] );
     //  Load Services data from services json file 
     useEffect( () => {
-        fetch( 'http://localhost:5000/products' )
+        fetch( 'https://sheltered-chamber-51938.herokuapp.com/products' )
             .then( res => res.json() )
             .then( data => setProducts( data ) )
     }, [] );

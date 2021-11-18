@@ -6,13 +6,13 @@ const ManageOrders = () => {
     const [ control, setControl ] = useState( false );
 
     useEffect( () => {
-        fetch( `http://localhost:5000/allOrders` )
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/allOrders` )
             .then( res => res.json() )
             .then( data => setOrders( data ) )
     }, [ control ] );
 
     const handleDelete = ( id ) => {
-        fetch( `http://localhost:5000/deleteOrder/${id}`, {
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
         } )
             .then( ( res ) => res.json() )

@@ -20,7 +20,7 @@ const ProductDetails = () => {
 
     //use effect load indivitual data 
     useEffect( () => {
-        fetch( `http://localhost:5000/products/${productId}` )
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/products/${productId}` )
             .then( res => res.json() )
             .then( result => setProducts( result ) )
     }, [] );
@@ -28,7 +28,7 @@ const ProductDetails = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = data => {
-        axios.post( 'http://localhost:5000/purchase', data )
+        axios.post( 'https://sheltered-chamber-51938.herokuapp.com/purchase', data )
             .then( res => {
                 if ( res.data.insertedId ) {
                     alert( 'order placed successfully' );

@@ -7,23 +7,9 @@ import './Header.css'; // header css
 
 const Header = () => {
     const { user, logOut } = useAuth();
-    // const [ users, setUsers ] = useState( {} );
 
 
-
-    // const { admin, general } = users[ 0 ] || {};
     const { email, displayName } = user;
-
-
-    // useEffect( () => {
-    //     fetch( `http://localhost:5000/user/${user.email}` )
-    //         .then( res => res.json() )
-    //         .then( result => setUsers( result ) )
-    // }, [] );
-
-
-
-
 
     return (
         // navbar start here 

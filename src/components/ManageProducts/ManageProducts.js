@@ -15,13 +15,13 @@ const ManageProducts = () => {
     const [ control, setControl ] = useState( false );
 
     useEffect( () => {
-        fetch( `http://localhost:5000/products` )
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/products` )
             .then( res => res.json() )
             .then( data => setProducts( data ) )
     }, [ control ] );
 
     const handleDelete = ( id ) => {
-        fetch( `http://localhost:5000/deleteProduct/${id}`, {
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/deleteProduct/${id}`, {
             method: "DELETE",
         } )
             .then( ( res ) => res.json() )

@@ -1,0 +1,85 @@
+# Query: http://localhost:5000/
+# ContextLines: 1
+
+17 results - 13 files
+
+src\components\AddServices\AddServices.js:
+  10      const onSubmit = data => {
+  11:         axios.post( 'https://sheltered-chamber-51938.herokuapp.com/products', data )
+  12              .then( res => {
+
+src\components\Carousel\Carousels.js:
+   9      useEffect( () => {
+  10:         fetch( 'https://sheltered-chamber-51938.herokuapp.com/carusel' )
+  11              .then( res => res.json() )
+
+src\components\Dashboard\Dashboard.js:
+  14      useEffect( () => {
+  15:         fetch( `https://sheltered-chamber-51938.herokuapp.com/user/${user.email}` )
+  16              .then( res => res.json() )
+
+src\components\HappyCustomer\HappyCustomer.js:
+   9      useEffect( () => {
+  10:         fetch( 'https://sheltered-chamber-51938.herokuapp.com/reviews' )
+  11              .then( res => res.json() )
+
+src\components\Header\Header.js:
+  18      // useEffect( () => {
+  19:     //     fetch( `https://sheltered-chamber-51938.herokuapp.com/user/${user.email}` )
+  20      //         .then( res => res.json() )
+
+src\components\Home\Home.js:
+  14      useEffect( () => {
+  15:         fetch( 'https://sheltered-chamber-51938.herokuapp.com/products' )
+  16              .then( res => res.json() )
+
+src\components\ManageOrders\ManageOrders.js:
+   8      useEffect( () => {
+   9:         fetch( `https://sheltered-chamber-51938.herokuapp.com/allOrders` )
+  10              .then( res => res.json() )
+
+  14      const handleDelete = ( id ) => {
+  15:         fetch( `https://sheltered-chamber-51938.herokuapp.com/deleteOrder/${id}`, {
+  16              method: "DELETE",
+
+src\components\ManageProducts\ManageProducts.js:
+  17      useEffect( () => {
+  18:         fetch( `https://sheltered-chamber-51938.herokuapp.com/products` )
+  19              .then( res => res.json() )
+
+  23      const handleDelete = ( id ) => {
+  24:         fetch( `https://sheltered-chamber-51938.herokuapp.com/deleteProduct/${id}`, {
+  25              method: "DELETE",
+
+src\components\MyOrders\MyOrders.js:
+  13      useEffect( () => {
+  14:         fetch( `https://sheltered-chamber-51938.herokuapp.com/myOrders/${user.email}` )
+  15              .then( res => res.json() )
+
+  19      const handleDelete = ( id ) => {
+  20:         fetch( `https://sheltered-chamber-51938.herokuapp.com/deleteOrder/${id}`, {
+  21              method: "DELETE",
+
+src\components\ProductDetails\ProductDetails.js:
+  22      useEffect( () => {
+  23:         fetch( `https://sheltered-chamber-51938.herokuapp.com/products/${productId}` )
+  24              .then( res => res.json() )
+
+  30      const onSubmit = data => {
+  31:         axios.post( 'https://sheltered-chamber-51938.herokuapp.com/purchase', data )
+  32              .then( res => {
+
+src\components\Review\Review.js:
+  12      const onSubmit = data => {
+  13:         axios.post( 'https://sheltered-chamber-51938.herokuapp.com/reviews', data )
+  14              .then( res => {
+
+src\components\Services\Services.js:
+   9      useEffect( () => {
+  10:         fetch( 'https://sheltered-chamber-51938.herokuapp.com/products' )
+  11              .then( res => res.json() )
+
+src\hooks\useFirebase.js:
+  92      const user = { email, displayName };
+  93:     fetch( 'https://sheltered-chamber-51938.herokuapp.com/user', {
+  94        method: "POST",

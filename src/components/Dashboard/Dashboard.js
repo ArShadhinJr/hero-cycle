@@ -12,7 +12,7 @@ const Dashboard = () => {
     const { admin, displayName } = users[ 0 ] || {};
 
     useEffect( () => {
-        fetch( `http://localhost:5000/user/${user.email}` )
+        fetch( `https://sheltered-chamber-51938.herokuapp.com/user/${user.email}` )
             .then( res => res.json() )
             .then( result => setUsers( result ) )
     }, [] );

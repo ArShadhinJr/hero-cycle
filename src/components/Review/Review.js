@@ -10,7 +10,7 @@ const Review = () => {
     const { user } = useAuth();
 
     const onSubmit = data => {
-        axios.post( 'http://localhost:5000/reviews', data )
+        axios.post( 'https://sheltered-chamber-51938.herokuapp.com/reviews', data )
             .then( res => {
                 if ( res.data.insertedId ) {
                     alert( 'added successfully' );

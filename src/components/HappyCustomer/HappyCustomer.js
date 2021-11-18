@@ -7,7 +7,7 @@ const HappyCustomer = () => {
     const [ reviews, setReviews ] = useState( [] );
     //  Load Services data from services json file 
     useEffect( () => {
-        fetch( 'http://localhost:5000/reviews' )
+        fetch( 'https://sheltered-chamber-51938.herokuapp.com/reviews' )
             .then( res => res.json() )
             .then( data => setReviews( data ) )
     }, [] );

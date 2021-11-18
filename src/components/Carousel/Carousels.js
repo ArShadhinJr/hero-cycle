@@ -7,7 +7,7 @@ const Carousels = () => {
     const [ carouseles, setCarouseles ] = useState( [] );
     // load data from carousels.json file 
     useEffect( () => {
-        fetch( 'http://localhost:5000/carusel' )
+        fetch( 'https://sheltered-chamber-51938.herokuapp.com/carusel' )
             .then( res => res.json() )
             .then( data => setCarouseles( data ) )
     }, [] );

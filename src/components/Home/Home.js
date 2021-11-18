@@ -12,7 +12,7 @@ function Home() {
     const [ products, setProducts ] = useState( [] );
     //  load data frm frist page for home page 
     useEffect( () => {
-        fetch( 'http://localhost:5000/products' )
+        fetch( 'https://sheltered-chamber-51938.herokuapp.com/products' )
             .then( res => res.json() )
             .then( data => setProducts( data ) )
     }, [] );
