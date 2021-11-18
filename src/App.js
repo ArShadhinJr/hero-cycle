@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import About from './components/About/About';
 import AddServices from './components/AddServices/AddServices';
+import Dashboard from './components/Dashboard/Dashboard';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -55,6 +56,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path="/makeadmin">
             <MakeAdmin></MakeAdmin>
+          </PrivateRoute>
+          <PrivateRoute exact path="/dashboard">
+            <Dashboard></Dashboard>
           </PrivateRoute>
           <PrivateRoute exact path="/manageproducts">
             <ManageProducts></ManageProducts>

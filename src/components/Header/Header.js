@@ -1,12 +1,30 @@
 import Button from '@restart/ui/esm/Button';
 import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Header.css'; // header css 
 
 const Header = () => {
     const { user, logOut } = useAuth();
+    // const [ users, setUsers ] = useState( {} );
+
+
+
+    // const { admin, general } = users[ 0 ] || {};
+    const { email, displayName } = user;
+
+
+    // useEffect( () => {
+    //     fetch( `http://localhost:5000/user/${user.email}` )
+    //         .then( res => res.json() )
+    //         .then( result => setUsers( result ) )
+    // }, [] );
+
+
+
+
+
     return (
         // navbar start here 
         <Navbar bg="warning" variant="light" className="p-4" expand="md">
@@ -32,23 +50,27 @@ const Header = () => {
                                 <NavLink to="/products" className="btn" activeClassName="btn-light">Explore Now</NavLink>
                             </Nav.Link>
 
-                            <NavDropdown title="Dashboard" className="btn" activeClassName="btn-light">
-                                <NavDropdown.Item> {user.email && <NavLink to="/myorders" className="btn">My Order</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/manageorders" className="btn">Manage all Order</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/addservices" className="btn" activeClassName="btn-light">Add a Product</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/pay" className="btn" activeClassName="btn-light">Pay</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/makeadmin" className="btn" activeClassName="btn-light">Make Admin</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/review" className="btn" activeClassName="btn-light">Review</NavLink>}</NavDropdown.Item>
-                                <NavDropdown.Item> {user.email && <NavLink to="/manageproducts" className="btn" activeClassName="btn-light">Manage Products</NavLink>}</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link>
+                                <NavLink to="/dashboard" className="btn" activeClassName="btn-light">Dashboard</NavLink>
+                            </Nav.Link>
+
+                            {/* <NavDropdown title="Dashboard" className="btn" activeClassName="btn-light">
+                                <NavDropdown.Item> {general && <NavLink to="/myorders" className="btn">My Order</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {admin && <NavLink to="/manageorders" className="btn">Manage all Order</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {admin && <NavLink to="/addservices" className="btn" activeClassName="btn-light">Add a Product</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {general && <NavLink to="/pay" className="btn" activeClassName="btn-light">Pay</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {admin && <NavLink to="/makeadmin" className="btn" activeClassName="btn-light">Make Admin</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {general && <NavLink to="/review" className="btn" activeClassName="btn-light">Review</NavLink>}</NavDropdown.Item>
+                                <NavDropdown.Item> {admin && <NavLink to="/manageproducts" className="btn" activeClassName="btn-light">Manage Products</NavLink>}</NavDropdown.Item>
+                            </NavDropdown> */}
 
 
                             <Nav.Link>
                                 {/* {user.email && <span style={{ color: 'white' }}>Hello {user.displayName} </span>} */}
-                                {user.email && <img className="rounded rounded-circle size" src={user.photoURL} alt="profile-picture" />}
+                                {email && <small>{displayName}</small>}
                             </Nav.Link>
                             <Nav.Link>
-                                {user.email ? <Button onClick={logOut} className="btn btn-light">Log Out</Button> : <NavLink to="/login" className="btn" activeClassName="btn-light">Login</NavLink>}
+                                {email ? <Button onClick={logOut} className="btn btn-light">Log Out</Button> : <NavLink to="/login" className="btn" activeClassName="btn-light">Login</NavLink>}
                             </Nav.Link>
 
 

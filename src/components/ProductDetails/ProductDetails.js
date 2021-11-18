@@ -16,6 +16,7 @@ const ProductDetails = () => {
 
     // distructuring for doctor 
     const { img, nameClass, cost, details, gender } = products;
+    console.log( products );
 
     //use effect load indivitual data 
     useEffect( () => {

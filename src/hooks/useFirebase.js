@@ -45,7 +45,7 @@ const useFirebase = () => {
       setError( 'Password Must be at least 6 characters long.' )
       return;
     }
-    if ( !/(?=.*[A-Z].*[A-Z])/.test( password ) ) {
+    if ( !/(?=.*[1].*[2])/.test( password ) ) {
       setError( 'Password Must contain 2 upper case' );
       return;
     }
@@ -71,17 +71,33 @@ const useFirebase = () => {
       } )
   }
 
-  const registerNewUser = ( email, password ) => {
+  const registerNewUser = ( email, password, history ) => {
     createUserWithEmailAndPassword( auth, email, password )
       .then( result => {
         const user = result.user;
         console.log( user );
         setError( '' );
         setUserName();
+        // save user to the database
+        saveUser( email, name, 'POST' );
+        history.replace( '/' );
       } )
       .catch( error => {
         setError( error.message );
+
       } )
+  }
+
+  const saveUser = ( email, displayName ) => {
+    const user = { email, displayName };
+    fetch( 'http://localhost:5000/user', {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify( user )
+    } )
+      .then()
   }
 
   const handleLogIn = e => {
