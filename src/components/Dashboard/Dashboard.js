@@ -11,7 +11,7 @@ const Dashboard = () => {
 
 
 
-    const { admin, general } = users[ 0 ] || {};
+    const { admin, displayName } = users[ 0 ] || {};
     // const { email, displayName } = user;
 
 
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
         <><div className="fw-bolder text-center p-5 m-5 ">
             <h1 className="fs-1 text-warning">DASHBOARD</h1>
-            <p>Name: {user.displayName} ---- You are {admin} {general}</p>
+            <p>Name: {user.displayName} ---- You are {admin} {displayName}</p>
         </div>
             {/* // navbar start here */}
             <Navbar bg="white" variant="light" className="p-4" expand="md">
@@ -42,7 +42,7 @@ const Dashboard = () => {
 
 
                                 <Nav.Link>
-                                    {general && <NavLink to="/myorders" className="btn">My Order</NavLink>}
+                                    {displayName && <NavLink to="/myorders" className="btn">My Order</NavLink>}
                                 </Nav.Link>
                                 <Nav.Link>
                                     {admin && <NavLink to="/manageorders" className="btn">Manage all Order</NavLink>}
@@ -51,13 +51,13 @@ const Dashboard = () => {
                                     {admin && <NavLink to="/addservices" className="btn" activeClassName="btn-light">Add a Product</NavLink>}
                                 </Nav.Link>
                                 <Nav.Link>
-                                    {general && <NavLink to="/pay" className="btn" activeClassName="btn-light">Pay</NavLink>}
+                                    {displayName && <NavLink to="/pay" className="btn" activeClassName="btn-light">Pay</NavLink>}
                                 </Nav.Link>
                                 <Nav.Link>
                                     {admin && <NavLink to="/makeadmin" className="btn" activeClassName="btn-light">Make Admin</NavLink>}
                                 </Nav.Link>
                                 <Nav.Link>
-                                    {general && <NavLink to="/review" className="btn" activeClassName="btn-light">Review</NavLink>}
+                                    {displayName && <NavLink to="/review" className="btn" activeClassName="btn-light">Review</NavLink>}
                                 </Nav.Link>
                                 <Nav.Link>
                                     {admin && <NavLink to="/manageproducts" className="btn" activeClassName="btn-light">Manage Products</NavLink>}
